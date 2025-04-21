@@ -3,4 +3,5 @@ langchain_ollama
 langchain_core
 fastapi
 uvicorn
-ollama
+line-bot-sdk
+python-dotenv
