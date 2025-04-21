@@ -9,6 +9,8 @@ from linebot.v3.messaging import (
 )
 import asyncio
 import json
+import prompt
+
 load_dotenv()
 access = os.getenv("ACCESS_TOKEN")
 configuration = Configuration(access_token=access)
@@ -32,15 +34,24 @@ async def dialogflow_webhook(req: Request):
     }
 
 async def get_menu():
-    #1.เอาเมนูจาก prompt ชื่อตัวแปร products
-    #2.ทำการจัดรูปแบบข้อความ loop
-    #เมนู\n-ชานม\n-ชาไทย (ุจะลองใส่ตัว topping ไปด้วยก็ได้นะ)
-    #3.เก็บใส่ตัวแปร result
+    menu = prompt.products #เอาเมนูจาก prompt ชื่อตัวแปร products
+    topping = prompt.toppings #เอาเมนูจาก prompt ชื่อตัวแปร toppings
+    result = "รายการ\n" 
+    for item in menu:
+        result += '- ' + item + '\n' #เก็บใส่ตัวแปร result
+        print(item) #ทำการจัดรูปแบบข้อความ loop
+    #เมนู\n-ชานม\n-ชาไทย 
+    
+    result += "ท้อปปิ้ง\n" 
+    for item in topping:
+        result += '- ' + item + '\n' 
+        print(item) #เมนู\n-ชานม\n-ชาไทย (ุลองใส่ตัว topping ไปด้วย)
+        
     return{
   "fulfillmentMessages": [
     {
       "text": {
-        "text": ["เมนู"]
+        "text": [result]
       }
     }
   ]
