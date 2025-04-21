@@ -42,7 +42,7 @@ async def get_menu():
         print(item) #ทำการจัดรูปแบบข้อความ loop
     #เมนู\n-ชานม\n-ชาไทย 
     
-    result += "ท้อปปิ้ง\n" 
+    result += "\nท้อปปิ้ง\n" 
     for item in topping:
         result += '- ' + item + '\n' 
         print(item) #เมนู\n-ชานม\n-ชาไทย (ุลองใส่ตัว topping ไปด้วย)
