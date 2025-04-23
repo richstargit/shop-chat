@@ -16,7 +16,7 @@ access = os.getenv("ACCESS_TOKEN")
 configuration = Configuration(access_token=access)
 app = FastAPI()
 
-@app.post("/web")
+@app.post("/web") 
 async def dialogflow_webhook(req: Request):
     body = await req.json()
     user_input = body['queryResult']['queryText']
